@@ -40,9 +40,9 @@ def getAllProducts(request):
 		ap = {}
 		ap["title"] = p.name
 		ap["author"] = p.author
-		ap['average rating'] = '\"{}\"'.format(p.rating)
-		ap['quantity'] = '\"{}\"'.format(p.quantity)
-		ap['your price'] = '\"{}\"'.format(p.price)
+		ap['average rating'] = str(p.rating)
+		ap['quantity'] = str(p.quantity)
+		ap['your price'] = str(p.price)
 		ap['thumburl'] = p.thumburl
 		ap['infourl'] = p.infourl
 		dic['{}.json'.format(p.title)] = ap
