@@ -1,0 +1,56 @@
+{
+    "cafe.json":
+     {
+        "title":"Vinacafe",
+        "author":"VINACAFE",
+        "average rating":"4",
+        "quantity":"41",
+        "your price":"45000",
+        "thumburl":"https://vinacafebienhoa-cms-production.s3-ap-southeast-1.amazonaws.com/iblock/b56/b56fb678d8abcbd85957eb7b27f2e587.png",
+        "infourl":"https://www.kiotviet.vn/"
+    },
+    "cozz.json":
+    {
+        "title":"COZZ CANDY",
+        "author":"DHG PHARMA",
+        "average rating":"3",
+        "quantity":"10",
+        "your price":"10000",
+        "thumburl":"http://www.dhgpharma.com.vn/images/stories/virtuemart/product/cozz%20Hop%2012.png",
+        "infourl":"https://www.kiotviet.vn/"
+    },
+    "lipton.json":
+    {
+        "title":"Trà  lipton",
+        "author":"Unilever",
+        "average rating":"2",
+        "quantity":"10",
+        "your price":"40000",
+        "thumburl":"http://htmart.org/wp-content/uploads/2018/11/18-2.jpg",
+        "infourl":"https://www.kiotviet.vn/"
+    },
+    "afc.json":
+    {
+        "title":"Bánh AFC Lúa Mì",
+        "author":"Kinh Đô´",
+        "average rating":"5",
+        "quantity":"15",
+        "your price":"25000",
+        "thumburl":"https://cdn.tgdd.vn/Products/Images/3357/79550/bhx/banh-dd-afc-lua-mi-hop-200g-2-org.jpg",
+        "infourl":"https://www.kiotviet.vn/"
+    },
+    "lavie.json":
+    {
+        "title":"Nước đóng chai lavie 350ml",
+        "author":"Nestle",
+        "average rating":"5",
+        "quantity":"282",
+        "your price":"5000",
+        "thumburl":"https://www.nuocsuoi.vn/wp-content/uploads/2018/08/nuoc-khoang-lavie-350ml-0304.jpg",
+        "infourl":"https://www.kiotviet.vn/"
+    }
+
+
+}
+
+
