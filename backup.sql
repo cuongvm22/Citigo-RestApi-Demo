@@ -4,13 +4,13 @@ CREATE TABLE IF NOT EXISTS `product_store` (
 	`name`	varchar ( 200 ) NOT NULL,
 	`adress`	varchar ( 200 ) NOT NULL
 );
-INSERT INTO `product_store` (id,name,adress) VALUES (1,'Tạp hóa Hồng Vân','390 Nguyễn Trãi'),
+INSERT INTO product_store (id,name,adress) VALUES (1,'Tạp hóa Hồng Vân','390 Nguyễn Trãi'),
  (2,'Tạp hóa anh Quân ','29 Khâm Thiên'),
  (3,'Tạp hóa Văn Quyền','89 Láng Hạ'),
  (4,'Mua sắm tự chọn Thanh Nhàn','99 Giải Phóng'),
  (5,'Tạp hóa Thanh Hoa  ','32 Ngọc Hồi'),
  (6,'Cửa hàng Minh Đức','90 Trần Phú');
-CREATE TABLE IF NOT EXISTS `product_product` (
+CREATE TABLE IF NOT EXISTS product_product (
 	`id`	integer NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`title`	varchar ( 200 ) NOT NULL,
 	`name`	varchar ( 200 ) NOT NULL,
@@ -23,7 +23,7 @@ INSERT INTO `product_product` (id,title,name,thumburl,infourl,rating) VALUES (1,
  (3,'lipton','Trà  lipton','http://htmart.org/wp-content/uploads/2018/11/18-2.jpg','https://www.kiotviet.vn/',2),
  (4,'afc','Bánh AFC Lúa Mì','https://cdn.tgdd.vn/Products/Images/3357/79550/bhx/banh-dd-afc-lua-mi-hop-200g-2-org.jpg','https://www.kiotviet.vn/',5),
  (5,'lavie','Nước đóng chai lavie 350ml','https://www.nuocsuoi.vn/wp-content/uploads/2018/08/nuoc-khoang-lavie-350ml-0304.jpg','https://www.kiotviet.vn/',4);
-CREATE TABLE IF NOT EXISTS `product_contain` (
+CREATE TABLE IF NOT EXISTS product_contain (
 	`id`	integer NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`price`	integer NOT NULL,
 	`productId_id`	integer NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `product_contain` (
 	FOREIGN KEY(`productId_id`) REFERENCES `product_product`(`id`),
 	FOREIGN KEY(`storeId_id`) REFERENCES `product_store`(`id`)
 );
-INSERT INTO `product_contain` (id,price,productId_id,storeId_id) VALUES (0,120000,1,1),
+INSERT INTO product_contain(id,price,productId_id,storeId_id) VALUES (0,120000,1,1),
  (1,125000,1,2),
  (2,90000,1,3),
  (3,145000,1,4),

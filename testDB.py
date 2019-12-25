@@ -6,6 +6,6 @@ conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 cur = conn.cursor()
 
-cur.execute("SELECT id from _product_contain;")
+cur.execute('SELECT "product_contain"."storeId_id" FROM "product_contain" WHERE "product_contain"."productId_id" = 3 ORDER BY "product_contain"."price" ASC LIMIT 3')
 a = cur.fetchall()
 print((a))

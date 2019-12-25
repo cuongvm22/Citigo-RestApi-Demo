@@ -200,7 +200,7 @@ CREATE TABLE public._product_contain (
 );
 
 
-ALTER TABLE public._product_contain OWNER TO rebasedata;
+ALTER TABLE public.product_contain OWNER TO rebasedata;
 
 --
 -- Name: _product_product; Type: TABLE; Schema: public; Owner: rebasedata
@@ -216,7 +216,7 @@ CREATE TABLE public._product_product (
 );
 
 
-ALTER TABLE public._product_product OWNER TO rebasedata;
+ALTER TABLE public.product_product OWNER TO rebasedata;
 
 --
 -- Name: _product_store; Type: TABLE; Schema: public; Owner: rebasedata
@@ -229,7 +229,7 @@ CREATE TABLE public._product_store (
 );
 
 
-ALTER TABLE public._product_store OWNER TO rebasedata;
+ALTER TABLE public.product_store OWNER TO rebasedata;
 
 --
 -- Name: _sqlite_sequence; Type: TABLE; Schema: public; Owner: rebasedata
@@ -381,7 +381,7 @@ COPY public._django_session (session_key, session_data, expire_date) FROM stdin;
 -- Data for Name: _product_contain; Type: TABLE DATA; Schema: public; Owner: rebasedata
 --
 
-COPY public._product_contain (id, price, productid_id, storeid_id) FROM stdin;
+COPY public.product_contain (id, price, productid_id, storeid_id) FROM stdin;
 0	120000	1	1
 1	125000	1	2
 2	90000	1	3
@@ -419,7 +419,7 @@ COPY public._product_contain (id, price, productid_id, storeid_id) FROM stdin;
 -- Data for Name: _product_product; Type: TABLE DATA; Schema: public; Owner: rebasedata
 --
 
-COPY public._product_product (id, title, name, thumburl, infourl, rating) FROM stdin;
+COPY public.product_product (id, title, name, thumburl, infourl, rating) FROM stdin;
 1	cafe	Vinacafe	https://vinacafebienhoa-cms-production.s3-ap-southeast-1.amazonaws.com/iblock/b56/b56fb678d8abcbd85957eb7b27f2e587.png	https://www.kiotviet.vn/	4
 2	cozz	COZZ CANDY	http://www.dhgpharma.com.vn/images/stories/virtuemart/product/cozz%20Hop%2012.png	https://www.kiotviet.vn/	3
 3	lipton	Trà  lipton	http://htmart.org/wp-content/uploads/2018/11/18-2.jpg	https://www.kiotviet.vn/	2
@@ -432,7 +432,7 @@ COPY public._product_product (id, title, name, thumburl, infourl, rating) FROM s
 -- Data for Name: _product_store; Type: TABLE DATA; Schema: public; Owner: rebasedata
 --
 
-COPY public._product_store (id, name, adress) FROM stdin;
+COPY public.product_store (id, name, adress) FROM stdin;
 1	Tạp hóa Hồng Vân	390 Nguyễn Trãi
 2	Tạp hóa anh Quân 	29 Khâm Thiên
 3	Tạp hóa Văn Quyền	89 Láng Hạ
@@ -446,7 +446,7 @@ COPY public._product_store (id, name, adress) FROM stdin;
 -- Data for Name: _sqlite_sequence; Type: TABLE DATA; Schema: public; Owner: rebasedata
 --
 
-COPY public._sqlite_sequence (name, seq) FROM stdin;
+COPY sqlite_sequence (name, seq) FROM stdin;
 product_store	6
 product_product	5
 product_contain	29
