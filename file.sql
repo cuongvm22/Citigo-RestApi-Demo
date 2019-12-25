@@ -28,8 +28,8 @@ CREATE TABLE IF NOT EXISTS `product_contain` (
 	`price`	integer NOT NULL,
 	`productId_id`	integer NOT NULL,
 	`storeId_id`	integer NOT NULL,
-	FOREIGN KEY(`storeId_id`) REFERENCES `product_store`(`id`),
-	FOREIGN KEY(`productId_id`) REFERENCES `product_product`(`id`)
+	FOREIGN KEY(`productId_id`) REFERENCES `product_product`(`id`),
+	FOREIGN KEY(`storeId_id`) REFERENCES `product_store`(`id`)
 );
 INSERT INTO `product_contain` (id,price,productId_id,storeId_id) VALUES (0,120000,1,1),
  (1,125000,1,2),
@@ -73,22 +73,24 @@ CREATE TABLE IF NOT EXISTS `django_migrations` (
 	`name`	varchar ( 255 ) NOT NULL,
 	`applied`	datetime NOT NULL
 );
-INSERT INTO `django_migrations` (id,app,name,applied) VALUES (1,'contenttypes','0001_initial','2019-12-17 07:26:25.411834'),
- (2,'auth','0001_initial','2019-12-17 07:26:25.721743'),
- (3,'admin','0001_initial','2019-12-17 07:26:25.966378'),
- (4,'admin','0002_logentry_remove_auto_add','2019-12-17 07:26:26.188085'),
- (5,'contenttypes','0002_remove_content_type_name','2019-12-17 07:26:26.460906'),
- (6,'auth','0002_alter_permission_name_max_length','2019-12-17 07:26:26.724902'),
- (7,'auth','0003_alter_user_email_max_length','2019-12-17 07:26:26.941186'),
- (8,'auth','0004_alter_user_username_opts','2019-12-17 07:26:27.296746'),
- (9,'auth','0005_alter_user_last_login_null','2019-12-17 07:26:27.495659'),
- (10,'auth','0006_require_contenttypes_0002','2019-12-17 07:26:27.614481'),
- (11,'auth','0007_alter_validators_add_error_messages','2019-12-17 07:26:27.824858'),
- (12,'sessions','0001_initial','2019-12-17 07:26:28.071073'),
- (13,'product','0001_initial','2019-12-17 07:56:12.457598'),
- (14,'product','0002_auto_20191217_0827','2019-12-17 08:28:04.329893'),
- (15,'product','0003_auto_20191219_0957','2019-12-19 09:58:09.759180'),
- (16,'product','0004_auto_20191219_1010','2019-12-19 10:10:05.777656');
+INSERT INTO `django_migrations` (id,app,name,applied) VALUES (1,'contenttypes','0001_initial','2019-12-20 11:22:41.252519'),
+ (2,'auth','0001_initial','2019-12-20 11:22:41.395008'),
+ (3,'admin','0001_initial','2019-12-20 11:22:41.528829'),
+ (4,'admin','0002_logentry_remove_auto_add','2019-12-20 11:22:41.654394'),
+ (5,'contenttypes','0002_remove_content_type_name','2019-12-20 11:22:41.794530'),
+ (6,'auth','0002_alter_permission_name_max_length','2019-12-20 11:22:41.927672'),
+ (7,'auth','0003_alter_user_email_max_length','2019-12-20 11:22:42.072617'),
+ (8,'auth','0004_alter_user_username_opts','2019-12-20 11:22:42.194602'),
+ (9,'auth','0005_alter_user_last_login_null','2019-12-20 11:22:42.327640'),
+ (10,'auth','0006_require_contenttypes_0002','2019-12-20 11:22:42.386106'),
+ (11,'auth','0007_alter_validators_add_error_messages','2019-12-20 11:22:42.519461'),
+ (12,'product','0001_initial','2019-12-20 11:22:42.652864'),
+ (13,'product','0002_auto_20191217_0827','2019-12-20 11:22:42.794529'),
+ (14,'product','0003_auto_20191219_0957','2019-12-20 11:22:42.951055'),
+ (15,'product','0004_auto_20191219_1010','2019-12-20 11:22:43.069302'),
+ (16,'product','0005_auto_20191220_1122','2019-12-20 11:22:43.218420'),
+ (17,'sessions','0001_initial','2019-12-20 11:22:43.344113'),
+ (18,'product','0006_auto_20191220_1125','2019-12-20 11:25:34.375653');
 CREATE TABLE IF NOT EXISTS `django_content_type` (
 	`id`	integer NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`app_label`	varchar ( 100 ) NOT NULL,
@@ -102,8 +104,7 @@ INSERT INTO `django_content_type` (id,app_label,model) VALUES (1,'admin','logent
  (6,'sessions','session'),
  (7,'product','product'),
  (8,'product','store'),
- (9,'product','storecontainproduct'),
- (10,'product','contain');
+ (9,'product','contain');
 CREATE TABLE IF NOT EXISTS `django_admin_log` (
 	`id`	integer NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`object_id`	text,
@@ -120,15 +121,15 @@ CREATE TABLE IF NOT EXISTS `auth_user_user_permissions` (
 	`id`	integer NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`user_id`	integer NOT NULL,
 	`permission_id`	integer NOT NULL,
-	FOREIGN KEY(`user_id`) REFERENCES `auth_user`(`id`),
-	FOREIGN KEY(`permission_id`) REFERENCES `auth_permission`(`id`)
+	FOREIGN KEY(`permission_id`) REFERENCES `auth_permission`(`id`),
+	FOREIGN KEY(`user_id`) REFERENCES `auth_user`(`id`)
 );
 CREATE TABLE IF NOT EXISTS `auth_user_groups` (
 	`id`	integer NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`user_id`	integer NOT NULL,
 	`group_id`	integer NOT NULL,
-	FOREIGN KEY(`group_id`) REFERENCES `auth_group`(`id`),
-	FOREIGN KEY(`user_id`) REFERENCES `auth_user`(`id`)
+	FOREIGN KEY(`user_id`) REFERENCES `auth_user`(`id`),
+	FOREIGN KEY(`group_id`) REFERENCES `auth_group`(`id`)
 );
 CREATE TABLE IF NOT EXISTS `auth_user` (
 	`id`	integer NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -174,27 +175,24 @@ INSERT INTO `auth_permission` (id,content_type_id,codename,name) VALUES (1,1,'ad
  (22,8,'add_store','Can add store'),
  (23,8,'change_store','Can change store'),
  (24,8,'delete_store','Can delete store'),
- (25,9,'add_storecontainproduct','Can add store contain product'),
- (26,9,'change_storecontainproduct','Can change store contain product'),
- (27,9,'delete_storecontainproduct','Can delete store contain product'),
- (28,10,'add_contain','Can add contain'),
- (29,10,'change_contain','Can change contain'),
- (30,10,'delete_contain','Can delete contain');
+ (25,9,'add_contain','Can add contain'),
+ (26,9,'change_contain','Can change contain'),
+ (27,9,'delete_contain','Can delete contain');
 CREATE TABLE IF NOT EXISTS `auth_group_permissions` (
 	`id`	integer NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`group_id`	integer NOT NULL,
 	`permission_id`	integer NOT NULL,
-	FOREIGN KEY(`group_id`) REFERENCES `auth_group`(`id`),
-	FOREIGN KEY(`permission_id`) REFERENCES `auth_permission`(`id`)
+	FOREIGN KEY(`permission_id`) REFERENCES `auth_permission`(`id`),
+	FOREIGN KEY(`group_id`) REFERENCES `auth_group`(`id`)
 );
 CREATE TABLE IF NOT EXISTS `auth_group` (
 	`id`	integer NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`name`	varchar ( 80 ) NOT NULL UNIQUE
 );
-CREATE INDEX IF NOT EXISTS `product_storecontainproduct_4eac05b7` ON `product_contain` (
+CREATE INDEX IF NOT EXISTS `product_contain_4eac05b7` ON `product_contain` (
 	`productId_id`
 );
-CREATE INDEX IF NOT EXISTS `product_storecontainproduct_1d068635` ON `product_contain` (
+CREATE INDEX IF NOT EXISTS `product_contain_1d068635` ON `product_contain` (
 	`storeId_id`
 );
 CREATE INDEX IF NOT EXISTS `django_session_de54fa62` ON `django_session` (
