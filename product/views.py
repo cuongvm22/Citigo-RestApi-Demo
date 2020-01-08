@@ -33,19 +33,7 @@ def getProduct(request,productTitle):
         	rs["store{}name".format(i+1)] = contain.storeId.name
         	rs["price{}".format(i+1)] =  contain.price
         	i += 1
-        rs["count"] = StoreServices.countStores(idProduct)
-
-        rs["name"] = product.name
-        rs["rating"] = str(product.rating)
-        rs["thumburl"] = product.thumburl
-        rs["infourl"] = product.infourl
-        i = 0
-        for contain in contains:
-        	rs["store{}id".format(i+1)] = contain.storeId.id
-        	rs["store{}name".format(i+1)] = contain.storeId.name
-        	rs["price{}".format(i+1)] =  contain.price
-        	i += 1
-
+        rs["contains"] = StoreServices.countStores(idProduct)
 
         return JsonResponse(rs,json_dumps_params={'indent': 2,'ensure_ascii':False},safe=False)
     except ValueError as e:
