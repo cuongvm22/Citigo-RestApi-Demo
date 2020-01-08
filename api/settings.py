@@ -103,7 +103,6 @@ if os.path.isfile(dotenv_file):
 DATABASES = {}
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
-del DATABASES['default']['OPTIONS']['sslmode']
 
 
 # Password validation
