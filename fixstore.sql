@@ -1,5 +1,5 @@
 BEGIN TRANSACTION;
-drop table `product_store`
+drop table product_store;
 CREATE TABLE IF NOT EXISTS `product_store` (
 	`id`	integer NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`name`	varchar ( 200 ) NOT NULL,
