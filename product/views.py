@@ -19,8 +19,10 @@ def getProduct(request,productTitle):
         idProduct = ProductServices.getIdProductByTitle(pdTitle)
         # return object product
         product = ProductServices.getProduct(idProduct)
+        # reuturn a contain object
+        bestPrice = ContainServices.getTop3Price(idProduct)[0]
         # return a containList: for each (containId, stroreId, productId ,price)
-        contains = ContainServices.getStoresAndPrices(idProduct)
+        contains = ContainServices.getTop3Distance(idProduct)
         rs = {}
 
         rs["name"] = product.name
@@ -32,7 +34,14 @@ def getProduct(request,productTitle):
         	rs["store{}id".format(i+1)] = contain.storeId.id
         	rs["store{}name".format(i+1)] = contain.storeId.name
         	rs["price{}".format(i+1)] =  contain.price
+        	rs["distance{}".format(i+1)] =  contain.storeId.distance
         	i += 1
+        rs['bestPriceStoreId'] = bestPrice.storeId.id
+        rs['bestPriceStoreName'] = bestPrice.storeId.name
+        rs['bestPriceDistance'] = bestPrice.storeId.distance
+        rs['bestPrice'] = bestPrice.price
+        rs['bestPriceUrl'] = bestPrice.storeId.url
+
         rs["contains"] = StoreServices.countStores(idProduct)
 
         return JsonResponse(rs,json_dumps_params={'indent': 2,'ensure_ascii':False},safe=False)

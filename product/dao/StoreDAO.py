@@ -8,4 +8,7 @@ def getAllStore():
 	for store in stores:
 		result[store.id] = product
 	cache.set("stores", result)
-
+# return 3 nearest Store
+def getTop3Distance(idProduct):
+	rs = ContainDAO.getContainByDistance(idProduct)[:3]
+	return rs

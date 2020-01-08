@@ -13,9 +13,11 @@ class Product(models.Model):
 class Store(models.Model):
 	name = models.CharField(max_length=200)
 	adress = models.CharField(max_length=200)
+	distance = models.IntegerField( default="", editable=False)
+	url = models.CharField(max_length=200, default="", editable=False)
 
 	def __str__(self):
-		return '{} {}'.format(self.name, self.adress)
+		return '{} {} {} {}'.format(self.name, self.adress, self.distance, self.url)
 
 
 class Contain(models.Model):
