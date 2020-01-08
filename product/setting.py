@@ -52,27 +52,3 @@ CACHES = {
 from django.conf import settings
 settings.configure(CACHES=CACHES)
 
-# #set cache data
-# from product.models import product
-# from django.core.cache import cache
-
-# def getProductDict():
-# 	a = Product.objects.all()
-# 	dic = {}
-# 	for p in a:
-# 		ap = {}
-# 		ap["title"] = p.name
-# 		ap["author"] = p.author
-# 		ap['average rating'] = p.rating
-# 		ap['quantity'] = p.quantity
-# 		ap['your price'] = p.price
-# 		ap['thumburl'] = p.thumburl
-# 		ap['infourl'] = p.infourl
-# 		dic['{}.json'.format(p.title)] = ap
-# 	return dic
-
-# dic = getProductDict()
-# for (k,v) in dic.items():
-# 	cache.set(k,v)
-
-# print(cache.get("cafe.json"))
